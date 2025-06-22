@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, watch, ref } from 'vue';
+import { ref, defineProps, watch, nextTick } from 'vue';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,8 +11,10 @@ import {
   Legend
 } from 'chart.js';
 import { Line } from 'vue-chartjs';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
-// Register Chart.js components
+// Register Chart.js components once globally
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -23,7 +25,7 @@ ChartJS.register(
   Legend
 );
 
-// Define props that this component expects from its parent (App.vue)
+// Props passed from App.vue
 const props = defineProps({
   chartData: {
     type: Object,
@@ -31,44 +33,116 @@ const props = defineProps({
   },
   chartOptions: {
     type: Object,
-    default: () => ({}) // Provide an empty object as default
+    default: () => ({})
   }
 });
 
-// A ref to hold the chart instance, useful if you need to manipulate the chart directly
+// Chart and DOM references
 const chartRef = ref(null);
+const chartContainer = ref(null);
 
-// Watch for changes in chartData or chartOptions and update the chart
-// This ensures the chart re-renders when data or options change in the parent
-watch(() => [props.chartData, props.chartOptions], () => {
-  if (chartRef.value && chartRef.value.chart) {
-    chartRef.value.chart.update();
-  }
-}, { deep: true }); // Use deep watch for nested changes in objects
+// Watch for chart updates
+watch(
+  () => [props.chartData, props.chartOptions],
+  () => {
+    if (chartRef.value?.chart) {
+      chartRef.value.chart.update();
+    }
+  },
+  { deep: true }
+);
+
+// Print chart to PDF
+const printChartToPDF = async () => {
+  if (!chartContainer.value) return;
+
+  const button = document.querySelector('.print-button');
+  if (button) button.style.visibility = 'hidden';
+
+  await nextTick();
+
+  const canvas = await html2canvas(chartContainer.value, {
+    scale: 2,
+    useCORS: true
+  });
+
+  const imgData = canvas.toDataURL('image/png');
+  const pdfWidth = 792;
+  const pdfHeight = 612;
+
+  const pdf = new jsPDF({
+    orientation: 'landscape',
+    unit: 'px',
+    format: [pdfWidth, pdfHeight]
+  });
+
+  const ratio = Math.min(pdfWidth / canvas.width, pdfHeight / canvas.height);
+  const imgWidth = canvas.width * ratio;
+  const imgHeight = canvas.height * ratio;
+  const x = (pdfWidth - imgWidth) / 2;
+  const y = (pdfHeight - imgHeight) / 2;
+
+  pdf.addImage(imgData, 'PNG', x, y, imgWidth, imgHeight);
+
+  const title =
+    props.chartOptions?.plugins?.title?.text?.trim() || 'run-chart';
+
+  const blob = pdf.output('blob');
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `${title}.pdf`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  window.open(url, '_blank');
+
+  if (button) button.style.visibility = 'visible';
+};
+
 </script>
 
+
 <template>
-  <div class="chart-container">
-    <Line v-if="props.chartData.labels && props.chartData.labels.length > 0"
+  <div>
+    <!-- Chart wrapper for PDF export -->
+    <div ref="chartContainer">
+      <div class="chart-container">
+        <Line
+          v-if="props.chartData.labels && props.chartData.labels.length > 0"
           :data="props.chartData"
           :options="props.chartOptions"
           ref="chartRef"
-    />
-    <p v-else class="no-data-message">Enter production data to display the run chart.</p>
+        />
+        <p v-else class="no-data-message">
+          Enter production data to display the run chart.
+        </p>
+      </div>
+    </div>
+
+    <!-- Export button -->
+    <button @click="printChartToPDF" class="print-button">
+      Print Chart to PDF
+    </button>
   </div>
 </template>
+
 
 <style scoped>
 .chart-container {
   position: relative;
-  height: 400px; /* Fixed height for the chart */
-  width: 100%; /* Take full width of its parent */
+  height: 400px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #fff;
   border-radius: 8px;
-  overflow: hidden; /* Hide anything that overflows */
+  overflow: hidden;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .no-data-message {
@@ -76,4 +150,27 @@ watch(() => [props.chartData, props.chartOptions], () => {
   font-size: 1.1em;
   text-align: center;
 }
+
+.print-button {
+  margin-top: 20px;
+  padding: 10px 16px;
+  font-size: 1em;
+  background-color: #2f80ed;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.print-button:hover {
+  background-color: #1e5cb8;
+}
+
+@media print {
+  .print-button {
+    display: none;
+  }
+}
 </style>
+
