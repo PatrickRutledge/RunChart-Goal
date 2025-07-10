@@ -15,6 +15,6 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
-  // This line must be exactly as shown below:
-  base: '/RunChart-Goal/', // <--- THIS IS THE CORRECT AND FINAL VALUE
+  // For Azure Static Web Apps, use root path
+  base: '/',
 })
