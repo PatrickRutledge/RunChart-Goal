@@ -1,0 +1,34 @@
+{
+  "appId": "com.patrutledge.runchart",
+  "appName": "Run Chart",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "launchAutoHide": true,
+      "backgroundColor": "#42b883",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false,
+      "splashFullScreen": true,
+      "splashImmersive": true
+    },
+    "StatusBar": {
+      "style": "DARK"
+    },
+    "Keyboard": {
+      "resize": "body",
+      "style": "DARK"
+    }
+  },
+  "ios": {
+    "contentInset": "automatic"
+  },
+  "android": {
+    "allowMixedContent": true,
+    "captureInput": true
+  }
+}
