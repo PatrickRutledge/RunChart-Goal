@@ -10,7 +10,10 @@
     "lint:oxlint": "oxlint . --fix -D correctness --ignore-path .gitignore",
     "lint:eslint": "eslint . --fix",
     "lint": "run-s lint:*",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "build:pwa": "vite build --mode production",
+    "preview:pwa": "vite preview --host",
+    "pwa:generate-icons": "pwa-asset-generator public/favicon.ico public --manifest public/manifest.json"
   },
   "dependencies": {
     "chart.js": "^4.5.0",

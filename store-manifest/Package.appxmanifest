@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities">
+
+  <Identity
+    Name="PatRutledge.RunChartGoalLimits"
+    Publisher="CN=Pat Rutledge"
+    Version="1.0.0.0" />
+
+  <Properties>
+    <DisplayName>Run Chart - Goal Limits</DisplayName>
+    <PublisherDisplayName>Pat Rutledge</PublisherDisplayName>
+    <Logo>images\StoreLogo.png</Logo>
+    <Description>Statistical Process Control charts for tracking performance goals and limits. Create, analyze, and export run charts to monitor process stability and performance over time.</Description>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="$targetentrypoint$">
+      <uap:VisualElements
+        DisplayName="Run Chart - Goal Limits"
+        Square150x150Logo="images\Square150x150Logo.png"
+        Square44x44Logo="images\Square44x44Logo.png"
+        Description="Statistical Process Control charts for tracking performance goals and limits"
+        BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="images\Wide310x150Logo.png"/>
+        <uap:SplashScreen Image="images\SplashScreen.png" />
+      </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="runchart">
+            <uap:DisplayName>Run Chart</uap:DisplayName>
+          </uap:Protocol>
+        </uap:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>
