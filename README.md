@@ -1,16 +1,27 @@
-# Run_Chart_GoalLimits
+# Run Chart - Goal Limits
 
-This template should help get you started developing with Vue 3 in Vite.
+A Vue.js application for creating Statistical Process Control (SPC) charts to track performance goals and limits over time.
 
-## Recommended IDE Setup
+## 🚀 Multiple Deployment Options Available
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+This repository is configured for deployment across multiple platforms:
 
-## Customize configuration
+| Platform | Branch | Description |
+|----------|--------|-------------|
+| 🌐 **Web App** | `azure-deployment` | Azure Static Web Apps hosting |
+| 💻 **Desktop** | `desktop-package` | Electron app for Windows/Mac/Linux |
+| 🏪 **Microsoft Store** | `store-package` | PWA for Microsoft Store |
+| 📱 **Mobile** | `mobile-app` | Native iOS & Android apps |
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+➡️ **[See Full Deployment Guide](DEPLOYMENT_GUIDE.md)** for detailed instructions
 
-## Project Setup
+## Development Setup
+
+### Prerequisites
+- Node.js 18+
+- npm
+
+### Quick Start
 
 ```sh
 npm install
