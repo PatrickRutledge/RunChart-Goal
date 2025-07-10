@@ -25,6 +25,9 @@ jobs:
       - name: Build application
         run: npm run build
       
+      - name: List build output
+        run: ls -la dist/
+        
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
@@ -32,4 +35,5 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "/"
+          api_location: ""
           output_location: "dist"
