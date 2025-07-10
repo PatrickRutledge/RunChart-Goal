@@ -4,7 +4,7 @@ import RunChartDisplay from './components/RunChartDisplay.vue';
 
 // Reactive variables for our inputs and chart title
 // Initial values are still here, but reset will clear them
-const chartTitle = ref('Production Throughput Run Chart');
+const chartTitle = ref('Production Throughput Run Chart - Azure Deployed');
 const unitOfMeasure = ref('Pounds');
 const timeScale = ref('Days');
 const goalLine = ref(12);
