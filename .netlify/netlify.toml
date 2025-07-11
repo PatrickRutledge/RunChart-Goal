@@ -1,6 +1,6 @@
+headersOrigin = "config"
+redirectsOrigin = "config"
 plugins = []
-headers = []
-redirects = []
 
 [functions]
 
@@ -8,11 +8,12 @@ redirects = []
 
 [build]
 publish = "C:\\Users\\PatRutledge\\Run_Chart_GoalLimits\\dist"
-publishOrigin = "ui"
-commandOrigin = "ui"
+publishOrigin = "config"
+commandOrigin = "config"
 command = "npm run build"
 
 [build.environment]
+NODE_VERSION = "18"
 
 [build.processing]
 
@@ -25,3 +26,34 @@ command = "npm run build"
 [build.processing.js]
 
 [build.services]
+
+[[headers]]
+for = "/privacy.html"
+
+[headers.values]
+Content-Type = "text/html"
+Cache-Control = "no-cache"
+
+[[redirects]]
+from = "/privacy.html"
+to = "/privacy.html"
+status = 200.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]

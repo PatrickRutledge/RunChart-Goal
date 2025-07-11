@@ -5,22 +5,38 @@
 [build.environment]
   NODE_VERSION = "18"
 
-# Explicitly handle static files
+# Handle legal document files
 [[redirects]]
   from = "/privacy.html"
   to = "/privacy.html"
   status = 200
   force = true
 
-# SPA redirect for Vue.js app
+[[redirects]]
+  from = "/terms.html"
+  to = "/terms.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/cookies.html"
+  to = "/cookies.html"
+  status = 200
+  force = true
+
+# SPA redirect for Vue.js app (should be last)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
   force = false
 
+# Headers for legal documents
 [[headers]]
-  for = "/privacy.html"
+  for = "/*.html"
     [headers.values]
     Content-Type = "text/html"
     Cache-Control = "no-cache"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
