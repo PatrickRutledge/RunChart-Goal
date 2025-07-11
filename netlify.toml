@@ -2,22 +2,17 @@
   command = "npm run build"
   publish = "dist"
 
-[[headers]]
-  for = "/*"
-    [headers.values]
-    Access-Control-Allow-Origin = "*"
-
-# Handle privacy.html specifically
-[[redirects]]
-  from = "/privacy.html"
-  to = "/privacy.html"
-  status = 200
-
-# Handle all other routes for the SPA
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
 [build.environment]
   NODE_VERSION = "18"
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = false
+
+[[headers]]
+  for = "/privacy.html"
+    [headers.values]
+    Content-Type = "text/html"
+    X-Content-Type-Options = "nosniff"
