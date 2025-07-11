@@ -21,6 +21,6 @@ export default defineConfig({
     assetsDir: 'assets',
     copyPublicDir: true,
   },
-  // Dynamically set base path for web (Netlify) and mobile (Capacitor)
-  base: process.env.VITE_APP_BASE || '/',
+  // Use root path for web deployment
+  base: '/',
 })

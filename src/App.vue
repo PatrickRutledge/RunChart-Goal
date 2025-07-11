@@ -28,7 +28,7 @@ const portfolioApps = ref([
     category: "Business & Productivity",
     status: "Available",
     platforms: ["Web", "Android", "iOS"],
-    url: "https://run-chart-goal-vue.netlify.app/RunChart-Goal/"
+    url: "https://run-chart-goal-vue.netlify.app"
   },
   {
     name: "Data Analyzer Pro", 
