@@ -28,7 +28,7 @@ const portfolioApps = ref([
     category: "Business & Productivity",
     status: "Available",
     platforms: ["Web", "Android", "iOS"],
-    url: "https://run-chart-goal-vue.netlify.app"
+    url: "https://run-chart-goal-vue.netlify.app/RunChart-Goal/"
   },
   {
     name: "Data Analyzer Pro", 
@@ -161,7 +161,7 @@ const chartData = computed(() => {
         fill: false,
         tooltip: { enabled: false }
       }
-    ],
+    ]
   };
 });
 
@@ -329,6 +329,8 @@ h1 {
   margin-bottom: 15px;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .input-instruction {
@@ -338,8 +340,8 @@ h1 {
 }
 
 .input-group label {
-  flex: 0 0 140px;
-  margin-right: 10px;
+  flex: 0 0 120px;
+  margin-right: 8px;
   text-align: right;
   font-weight: bold;
   color: #333;
@@ -347,7 +349,8 @@ h1 {
 
 .input-group input[type="text"],
 .input-group input[type="number"] {
-  flex-grow: 1;
+  flex: 1 1 120px;
+  min-width: 0;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -357,6 +360,7 @@ h1 {
 
 .input-group textarea {
   width: 100%;
+  min-width: 0;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;

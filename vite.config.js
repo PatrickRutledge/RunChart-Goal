@@ -15,6 +15,12 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
-  // This line must be exactly as shown below:
-  base: '/RunChart-Goal/', // <--- THIS IS THE CORRECT AND FINAL VALUE
+  publicDir: 'public',
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    copyPublicDir: true,
+  },
+  // Dynamically set base path for web (Netlify) and mobile (Capacitor)
+  base: process.env.VITE_APP_BASE || '/',
 })
