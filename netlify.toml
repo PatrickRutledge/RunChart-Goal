@@ -1,19 +1,23 @@
 [build]
-command = "npm run build"
-publish = "dist"
+  command = "npm run build"
+  publish = "dist"
 
-# Don't redirect privacy.html to index.html
 [[headers]]
-  for = "/privacy.html"
-  [headers.values]
-    Content-Type = "text/html"
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
 
+# Handle privacy.html specifically
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy.html"
+  status = 200
+
+# Handle all other routes for the SPA
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = false
-  conditions = {Path = "!/privacy.html"}
 
 [build.environment]
   NODE_VERSION = "18"

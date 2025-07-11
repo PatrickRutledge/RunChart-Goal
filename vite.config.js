@@ -20,7 +20,12 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     copyPublicDir: true,
+    rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL('./index.html', import.meta.url)),
+        privacy: fileURLToPath(new URL('./public/privacy.html', import.meta.url))
+      }
+    }
   },
-  // Use root path for web deployment
   base: '',
 })
