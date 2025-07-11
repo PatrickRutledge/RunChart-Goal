@@ -5,14 +5,22 @@
 [build.environment]
   NODE_VERSION = "18"
 
-[build.processing]
-  skip_processing = false
+# Explicitly handle static files
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy.html"
+  status = 200
+  force = true
 
-[build.processing.html]
-  pretty_urls = false
+# SPA redirect for Vue.js app
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
 
 [[headers]]
   for = "/privacy.html"
     [headers.values]
     Content-Type = "text/html"
-    X-Content-Type-Options = "nosniff"
+    Cache-Control = "no-cache"
