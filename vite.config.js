@@ -22,5 +22,5 @@ export default defineConfig({
     copyPublicDir: true,
   },
   // Use root path for web deployment
-  base: '/',
+  base: '',
 })

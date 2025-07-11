@@ -1,0 +1,16 @@
+{
+  "name": "Run Chart Analytics",
+  "short_name": "Run Chart",
+  "description": "Professional statistical process control charts for manufacturing and quality control",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#42b983",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}
