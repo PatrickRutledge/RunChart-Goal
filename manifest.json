@@ -1,13 +1,17 @@
 {
+  "id": "runchart-visualization-pwa",
   "name": "RunChart Visualization",
   "short_name": "RunChart",
   "description": "Professional run chart visualization tool for statistical process control and quality analysis",
   "start_url": "/RunChart-Goal/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
   "background_color": "#ffffff",
   "theme_color": "#2563eb",
   "orientation": "any",
   "scope": "/RunChart-Goal/",
+  "lang": "en-US",
+  "dir": "ltr",
   "icons": [
     {
       "src": "/RunChart-Goal/android-icon-512.png",
@@ -33,5 +37,20 @@
     }
   ],
   "categories": ["productivity", "business"],
-  "prefer_related_applications": false
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "New Chart",
+      "url": "/RunChart-Goal/",
+      "description": "Create a new run chart"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/RunChart-Goal/runchart-logo.png",
+      "sizes": "310x310",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ]
 }
