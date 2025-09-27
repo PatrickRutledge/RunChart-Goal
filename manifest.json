@@ -10,10 +10,21 @@
   "scope": "/RunChart-Goal/",
   "icons": [
     {
-      "src": "/RunChart-Goal/runchart-logo.png",
+      "src": "/RunChart-Goal/android-icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/RunChart-Goal/android-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/RunChart-Goal/runchart-logo.png",
+      "sizes": "310x310",
+      "type": "image/png"
     },
     {
       "src": "/RunChart-Goal/runchart-logo.png",
