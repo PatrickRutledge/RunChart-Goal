@@ -1,0 +1,26 @@
+{
+  "name": "RunChart Visualization",
+  "short_name": "RunChart",
+  "description": "Professional run chart visualization tool for statistical process control and quality analysis",
+  "start_url": "/RunChart-Goal/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "any",
+  "scope": "/RunChart-Goal/",
+  "icons": [
+    {
+      "src": "/RunChart-Goal/runchart-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/RunChart-Goal/runchart-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["productivity", "business"],
+  "prefer_related_applications": false
+}
