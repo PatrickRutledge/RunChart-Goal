@@ -1,7 +1,7 @@
 {
-  "id": "runchart-visualization-pwa",
-  "name": "RunChart Visualization",
-  "short_name": "RunChart",
+  "id": "AetherForge.RunChartVisualization",
+  "name": "Run Chart Visualization",
+  "short_name": "Run Chart",
   "description": "Professional run chart visualization tool for statistical process control and quality analysis",
   "start_url": "/RunChart-Goal/",
   "display": "standalone",
